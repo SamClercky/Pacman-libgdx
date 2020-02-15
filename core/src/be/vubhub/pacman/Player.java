@@ -8,14 +8,14 @@ import com.badlogic.gdx.math.Rectangle;
 
 public class Player extends Rectangle {
     private Rectangle pos;
-    private SpriteBatch spriteBatch;
+    private SpriteBatch batch;
     private Texture sprite;
 
     private int speed = 200;
 
     Player() {
         pos = new Rectangle(0,0,20,20);
-        spriteBatch = new SpriteBatch();
+        batch = new SpriteBatch();
         sprite = new Texture(Gdx.files.internal("badlogic.jpg"));
     }
 
@@ -36,13 +36,13 @@ public class Player extends Rectangle {
     void render() {
         updatePos();
 
-        spriteBatch.begin();
-        spriteBatch.draw(sprite, pos.x, pos.y);
-        spriteBatch.end();
+        batch.begin();
+        batch.draw(sprite, pos.x, pos.y);
+        batch.end();
     }
 
     void dispose() {
-        spriteBatch.dispose();
+        batch.dispose();
         sprite.dispose();
     }
 

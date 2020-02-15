@@ -10,12 +10,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class Pacman extends ApplicationAdapter {
 	Player player;
 	OrthographicCamera camera;
+	Walls walls;
 	
 	@Override
 	public void create () {
 		player = new Player();
+		walls = new Walls();
 		camera = new OrthographicCamera();
-		camera.setToOrtho(false, 800, 400);
+		camera.setToOrtho(false, 1350, 1350);
 	}
 
 	@Override
@@ -23,6 +25,7 @@ public class Pacman extends ApplicationAdapter {
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+		walls.render();
 		player.render();
 
 		camera.update();
@@ -31,5 +34,6 @@ public class Pacman extends ApplicationAdapter {
 	@Override
 	public void dispose () {
 		player.dispose();
+		walls.dispose();
 	}
 }
